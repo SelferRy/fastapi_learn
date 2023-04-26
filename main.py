@@ -28,7 +28,7 @@ def hello():
 
 
 fake_users = [
-    {"id": 1, "role": "admin", "name": ["Bob"]},
+    {"id": 1, "role": "admin", "name": "Bob"},
     {"id": 2, "role": "investor", "name": "John"},
     {"id": 3, "role": "trader", "name": "Matt"},
     {"id": 4, "role": "investor", "name": "Homer", "degree": [
