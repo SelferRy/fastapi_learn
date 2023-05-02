@@ -17,12 +17,21 @@ Base: DeclarativeMeta = declarative_base()
 
 
 class User(SQLAlchemyBaseUserTable[int], Base):
-    id = Column("id", Integer, primary_key=True),
-    email = Column("email", String, nullable=False),
-    username = Column("username", String, nullable=False),
-    password = Column("password", String, nullable=False),
-    registered_at = Column("registered_at", TIMESTAMP, default=datetime.utcnow),
-    role_id = Column("role_id", Integer, ForeignKey(role.c.id)),
+    id: Mapped[int] = mapped_column(
+        Integer, primary_key=True
+    ),
+    username: Mapped[str] = mapped_column(
+        String, nullable=False
+    ),
+    password: Mapped[str] = mapped_column(
+        String, nullable=False
+    ),
+    registered_at: Mapped[TIMESTAMP] = mapped_column(
+        TIMESTAMP, default=datetime.utcnow
+    ),
+    role_id: Mapped[int] = mapped_column(
+        Integer, ForeignKey(role.c.id)
+    ),
     email: Mapped[str] = mapped_column(
         String(length=320), unique=True, index=True, nullable=False
     )
